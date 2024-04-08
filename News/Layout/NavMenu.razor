@@ -1,5 +1,9 @@
 ﻿<MudNavMenu>
-    <MudNavLink Href="" Match="NavLinkMatch.All" Icon="@Icons.Material.Filled.Home">Home</MudNavLink>
-    <MudNavLink Href="counter" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Add">Counter</MudNavLink>
-    <MudNavLink Href="weather" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.List">Weather</MudNavLink>
+    <MudNavGroup Title="Home" Icon="@Icons.Material.Filled.Newspaper" Expanded="true">
+        <MudNavLink Href="" Match="NavLinkMatch.All">Headlines</MudNavLink>
+        <MudNavLink Href="local" Match="NavLinkMatch.Prefix">Local</MudNavLink>
+        <MudNavLink Href="global" Match="NavLinkMatch.Prefix">Global</MudNavLink>
+    </MudNavGroup>
+    <MudNavLink Href="settings" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Settings">Settings</MudNavLink>
+    <MudNavLink Href="about" Match="NavLinkMatch.Prefix" Icon="@Icons.Material.Filled.Info">About</MudNavLink>
 </MudNavMenu>
