@@ -1,6 +1,6 @@
 {
-  "name": "DoToo",
-  "short_name": "DoToo",
+  "name": "News",
+  "short_name": "News",
   "id": "./",
   "start_url": "./",
   "display": "standalone",
