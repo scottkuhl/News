@@ -1,9 +1,45 @@
 @page "/"
+@page "/global"
+@page "/local"
+@inject INewsService NewsService
+@inject NavigationManager Nav
 
-<PageTitle>Headlines - News</PageTitle>
+<PageTitle>@_scope.ToString() - News</PageTitle>
 
-<MudText Typo="Typo.h1">Headlines</MudText>
+<MudText Typo="Typo.h1">@_scope.ToString()</MudText>
+
+@if (_currentNews is null)
+{
+    <MudProgressCircular Color="Color.Primary" Indeterminate="true"/>
+}
+else
+{
+    @foreach (var article in _currentNews.Articles)
+    {
+        <ArticleItem Article="article" />
+    }
+}
 
 @code {
+    private NewsResult? _currentNews;
+    private NewsScope _scope;
 
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        _scope = NewsScope.Headlines;
+        var page = Nav.ToBaseRelativePath(Nav.Uri);
+        
+        if (page.StartsWith("global", StringComparison.InvariantCultureIgnoreCase))
+        {
+            _scope = NewsScope.Global;
+        }
+        else if (page.StartsWith("local", StringComparison.InvariantCultureIgnoreCase))
+        {
+            _scope = NewsScope.Local;
+        }
+        
+        _currentNews = await NewsService.GetNews(_scope);
+    }
 }

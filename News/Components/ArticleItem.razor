@@ -1,5 +1,13 @@
-<MudText Typo="Typo.body1">Article</MudText>
+<MudLink Href="@Article.Url">
+    <MudCard Class="ma-4">
+        <MudCardMedia Image="@Article.UrlToImage" Height="200" />
+        <MudCardContent>
+            <MudText Typo="Typo.h5">@Article.Title</MudText>
+            <MudText Typo="Typo.body2">@Article.PublishedAt.ToLongDateString()</MudText>
+        </MudCardContent>
+    </MudCard>
+</MudLink>
 
 @code {
-
+    [Parameter, EditorRequired] public Article Article { get; set; } = default!;
 }
